@@ -1,0 +1,54 @@
+---
+import ImageCarousel from './ImageCarousel.tsx';
+
+// Replace these with your actual images from /public/images/carousel/
+// Example: '/images/carousel/facility-1.jpg', '/images/carousel/facility-2.jpg', etc.
+// Currently using placeholder images - replace with your own!
+const carouselImages = [
+	'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop',
+	'https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&h=600&fit=crop',
+	'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop',
+	'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop',
+];
+
+// When you add your images, replace the array above with something like:
+// const carouselImages = [
+//   '/images/carousel/facility-1.jpg',
+//   '/images/carousel/facility-2.jpg',
+//   '/images/carousel/facility-3.jpg',
+//   '/images/carousel/facility-4.jpg',
+// ];
+---
+
+<section id="home" class="py-20 bg-white">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+				Our Home
+			</h2>
+			<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+				Take a virtual tour of our warm and welcoming facility
+			</p>
+		</div>
+
+		<div class="max-w-6xl mx-auto">
+			<ImageCarousel client:load images={carouselImages} />
+		</div>
+
+		<div class="grid md:grid-cols-3 gap-8 mt-16">
+			<div class="text-center">
+				<div class="text-4xl font-bold text-blue-600 mb-2">100+</div>
+				<div class="text-gray-600">Happy Residents</div>
+			</div>
+			<div class="text-center">
+				<div class="text-4xl font-bold text-blue-600 mb-2">15+</div>
+				<div class="text-gray-600">Years of Experience</div>
+			</div>
+			<div class="text-center">
+				<div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+				<div class="text-gray-600">Care Support</div>
+			</div>
+		</div>
+	</div>
+</section>
+

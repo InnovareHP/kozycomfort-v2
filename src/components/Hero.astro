@@ -2,20 +2,45 @@
 // Simple Hero Section
 ---
 
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
-	<div class="container mx-auto px-4 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-4">
-			ADA GRACE
-		</h1>
-		<p class="text-xl md:text-2xl text-white mb-2">
-			Comfort. Community. Care.
-		</p>
-		<p class="text-lg text-blue-100 mb-8">
-			855 Maplehill Avenue SE, Ada, MI 49301
-		</p>
-		<button class="bg-white text-gray-900 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
-			SCHEDULE A TOUR
-		</button>
+<section 
+	class="h-[calc(100vh-72px)] md:h-[calc(100vh-88px)] min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat relative overflow-hidden"
+	style="background-image: url('/images/hero-section/hero-image.png');"
+>
+	<!-- Dark overlay for text readability -->
+	<div class="absolute inset-0 bg-black/75"></div>
+	
+	<!-- Content -->
+	<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 w-full flex flex-col items-center justify-center">
+		<div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 max-w-6xl mb-8 md:mb-10 fade-in">
+			<!-- Logo on the left -->
+			<div class="flex-shrink-0 flex flex-col items-center">
+				<img
+					src="/images/logo/logo-transparent.png"
+					alt="Kozy Komfort Logo"
+					class="h-20 sm:h-24 md:h-32 lg:h-40 w-auto"
+				/>
+			</div>
+			
+			<!-- Text content on the right -->
+			<div class="text-center md:text-left">
+				<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 md:mb-5 leading-tight" style="font-family: 'Garamond', 'EB Garamond', serif;">
+					KOZY KOMFORT
+				</h1>
+				<p class="text-lg sm:text-xl md:text-2xl lg:text-2xl text-white mb-2 sm:mb-3">
+					Adult Foster Care
+				</p>
+				<p class="text-sm sm:text-base md:text-lg lg:text-lg text-blue-100 mb-6 sm:mb-8 max-w-2xl leading-relaxed">
+					261 Beachfield Dr, Battle Creek, MI 49015, United States
+				</p>
+			</div>
+		</div>
+		
+		<!-- Button centered below everything -->
+		<div class="flex justify-center">
+			<button class="bg-white border-2 border-gray-800 text-gray-900 px-6 sm:px-8 py-2.5 sm:py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors cursor-pointer text-sm sm:text-base md:text-lg shadow-lg uppercase fade-in-button">
+				SPEAK WITH OUR CARE TEAM
+			</button>
+		</div>
 	</div>
 </section>
 
