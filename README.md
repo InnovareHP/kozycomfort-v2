@@ -1,13 +1,63 @@
-# Astro with Tailwind
+# Kozy Komfort - Adult Foster Care Website
 
-```sh
-npm create astro@latest -- --template with-tailwindcss
+A modern, accessible website for Kozy Komfort Assisted Living in Battle Creek, Michigan.
+
+## Features
+
+- Responsive design for all devices
+- ADA compliant with WCAG 2.1 Level AA standards
+- Contact form and career application form
+- Image carousel for facility tour
+- Modern UI with Tailwind CSS
+
+## Tech Stack
+
+- **Astro** - Static site generator
+- **React** - Interactive components
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+## Deployment
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+This project is configured for Netlify deployment with the included `netlify.toml` file.
 
-For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+### Netlify Setup
+
+1. Push this repository to GitHub/GitLab
+2. Connect your repository to Netlify
+3. Netlify will automatically detect the build settings from `netlify.toml`
+4. Deploy!
+
+The build will:
+- Run `npm run build`
+- Publish from the `dist` directory
+- Use Node.js 18
+
+## Project Structure
+
+```
+/
+├── public/          # Static assets (images, favicon)
+├── src/
+│   ├── components/  # Reusable components
+│   ├── pages/       # Page routes
+│   ├── styles/      # Global styles
+│   └── lib/         # Utilities
+└── netlify.toml     # Netlify configuration
+```

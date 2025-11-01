@@ -1,0 +1,16 @@
+[build]
+  # Build command for Astro
+  command = "npm run build"
+  # Output directory where Astro builds your site
+  publish = "dist"
+
+# Node.js version (Astro requires Node 18+)
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirects for client-side routing (if needed)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
