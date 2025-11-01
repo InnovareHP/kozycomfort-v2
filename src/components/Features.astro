@@ -1,53 +1,55 @@
 ---
 import ImageCarousel from './ImageCarousel.tsx';
 
-// Replace these with your actual images from /public/images/carousel/
-// Example: '/images/carousel/facility-1.jpg', '/images/carousel/facility-2.jpg', etc.
-// Currently using placeholder images - replace with your own!
 const carouselImages = [
-	'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop',
-	'https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&h=600&fit=crop',
-	'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop',
-	'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop',
+	'/images/feature-section/feature-img_1.jpg',
+	'/images/feature-section/feature-img_2.jpg',
+	'/images/feature-section/feature-img_3.jpg',
+	'/images/feature-section/feature-img_4.jpg',
+	'/images/feature-section/feature-img_5.jpg',
+	'/images/feature-section/feature-img_6.jpg',
+	'/images/feature-section/feature-img_7.jpg',
+	'/images/feature-section/feature-img_8.jpg',
+	'/images/feature-section/feature-img_9.jpg',
+	'/images/feature-section/feature-img_10.jpg',
+	'/images/feature-section/feature-img_11.jpg',
+	'/images/feature-section/feature-img_12.jpg',
+	'/images/feature-section/feature-img_13.jpg',
+	'/images/feature-section/feature-img_14.jpg',
+	'/images/feature-section/feature-img_15.jpg',
+	'/images/feature-section/feature-img_16.jpg',
 ];
-
-// When you add your images, replace the array above with something like:
-// const carouselImages = [
-//   '/images/carousel/facility-1.jpg',
-//   '/images/carousel/facility-2.jpg',
-//   '/images/carousel/facility-3.jpg',
-//   '/images/carousel/facility-4.jpg',
-// ];
 ---
 
 <section id="home" class="py-20 bg-white">
 	<div class="container mx-auto px-6 md:px-8 lg:px-4 section-container-margin">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-				Our Home
+				Our Facility
 			</h2>
 			<p class="text-xl text-gray-600 max-w-2xl mx-auto">
 				Take a virtual tour of our warm and welcoming facility
 			</p>
 		</div>
 
-		<div class="max-w-6xl mx-auto">
+		<div class="max-w-6xl mx-auto mb-16">
 			<ImageCarousel client:load images={carouselImages} />
 		</div>
 
-		<div class="grid md:grid-cols-3 gap-8 mt-16">
-			<div class="text-center">
-				<div class="text-4xl font-bold text-blue-600 mb-2">100+</div>
-				<div class="text-gray-600">Happy Residents</div>
+		<!-- Visiting Hours and Mission Statement -->
+		<div class="max-w-3xl mx-auto text-center">
+			<div class="mb-8 pb-8 border-b border-gray-300">
+				<h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+					Resident Visiting Hours:
+				</h3>
+				<p class="text-xl md:text-2xl text-gray-700 font-medium">
+					8AM and 8PM
+				</p>
 			</div>
-			<div class="text-center">
-				<div class="text-4xl font-bold text-blue-600 mb-2">15+</div>
-				<div class="text-gray-600">Years of Experience</div>
-			</div>
-			<div class="text-center">
-				<div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-				<div class="text-gray-600">Care Support</div>
-			</div>
+
+			<p class="text-lg md:text-xl text-gray-700 leading-relaxed italic">
+				"It's our mission to help provide quality care for senior citizens across West Michigan."
+			</p>
 		</div>
 	</div>
 </section>

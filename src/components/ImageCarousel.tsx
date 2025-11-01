@@ -1,37 +1,77 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 interface ImageCarouselProps {
-  images: string[]
-  className?: string
+  images: string[];
+  className?: string;
 }
 
-export default function ImageCarousel({ images, className }: ImageCarouselProps) {
-  const [currentIndex, setCurrentIndex] = React.useState(0)
+export default function ImageCarousel({
+  images,
+  className,
+}: ImageCarouselProps) {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [touchStart, setTouchStart] = React.useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    )
-  }
+  // Minimum swipe distance (in px) to trigger navigation
+  const minSwipeDistance = 50;
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    )
-  }
+    );
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrevious();
+    }
+  };
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      )
-    }, 5000) // Auto-rotate every 5 seconds
-    return () => clearInterval(interval)
-  }, [images.length])
+      );
+    }, 5000); // Auto-rotate every 5 seconds
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <div className={cn("relative w-full h-[500px] overflow-hidden rounded-lg", className)}>
+    <div
+      className={cn(
+        "relative w-full h-[500px] overflow-hidden rounded-lg touch-pan-y bg-gray-100",
+        className
+      )}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {/* Images */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
@@ -44,31 +84,11 @@ export default function ImageCarousel({ images, className }: ImageCarouselProps)
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         ))}
       </div>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors z-10"
-        aria-label="Previous image"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors z-10"
-        aria-label="Next image"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
 
       {/* Dots Indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
@@ -87,6 +107,5 @@ export default function ImageCarousel({ images, className }: ImageCarouselProps)
         ))}
       </div>
     </div>
-  )
+  );
 }
-
