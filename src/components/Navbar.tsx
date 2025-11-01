@@ -26,8 +26,8 @@ export default function Navbar() {
     { href: "#about", label: "About Us" },
     { href: "#services", label: "Our Services" },
     { href: "#home", label: "Our Facility" },
-    { href: "#contact", label: "Contact Us" },
-    { href: "#careers", label: "CAREERS", isButton: true },
+    { href: "/contact", label: "Contact Us" },
+    { href: "/careers", label: "CAREERS", isButton: true },
   ];
 
   return (
@@ -73,6 +73,24 @@ export default function Navbar() {
                       link.isButton
                         ? (e) => {
                             e.currentTarget.style.backgroundColor = "#BE1C2B";
+                          }
+                        : undefined
+                    }
+                    onFocus={
+                      link.isButton
+                        ? (e) => {
+                            e.currentTarget.style.backgroundColor = "#9A1623";
+                            e.currentTarget.style.outline = "2px solid white";
+                            e.currentTarget.style.outlineOffset = "2px";
+                          }
+                        : undefined
+                    }
+                    onBlur={
+                      link.isButton
+                        ? (e) => {
+                            e.currentTarget.style.backgroundColor = "#BE1C2B";
+                            e.currentTarget.style.outline = "";
+                            e.currentTarget.style.outlineOffset = "";
                           }
                         : undefined
                     }
@@ -143,6 +161,24 @@ export default function Navbar() {
                   link.isButton
                     ? (e) => {
                         e.currentTarget.style.backgroundColor = "#BE1C2B";
+                      }
+                    : undefined
+                }
+                onFocus={
+                  link.isButton
+                    ? (e) => {
+                        e.currentTarget.style.backgroundColor = "#9A1623";
+                        e.currentTarget.style.outline = "2px solid white";
+                        e.currentTarget.style.outlineOffset = "2px";
+                      }
+                    : undefined
+                }
+                onBlur={
+                  link.isButton
+                    ? (e) => {
+                        e.currentTarget.style.backgroundColor = "#BE1C2B";
+                        e.currentTarget.style.outline = "";
+                        e.currentTarget.style.outlineOffset = "";
                       }
                     : undefined
                 }

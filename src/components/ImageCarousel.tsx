@@ -71,19 +71,26 @@ export default function ImageCarousel({
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
+      role="region"
+      aria-label="Image carousel"
     >
       {/* Images */}
-      <div className="relative w-full h-full">
+      <div
+        className="relative w-full h-full"
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {images.map((image, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-500 ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
+            aria-hidden={index !== currentIndex}
           >
             <img
               src={image}
-              alt={`Slide ${index + 1}`}
+              alt={`Facility image ${index + 1} of ${images.length}`}
               className="w-full h-full object-contain"
             />
           </div>
@@ -91,18 +98,25 @@ export default function ImageCarousel({
       </div>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+        role="tablist"
+        aria-label="Carousel navigation"
+      >
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={cn(
-              "w-3 h-3 rounded-full transition-all",
+              "w-3 h-3 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-400",
               index === currentIndex
                 ? "bg-white w-8"
                 : "bg-white/50 hover:bg-white/75"
             )}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Go to slide ${index + 1} of ${images.length}`}
+            aria-current={index === currentIndex ? "true" : "false"}
+            role="tab"
+            tabIndex={index === currentIndex ? 0 : -1}
           />
         ))}
       </div>

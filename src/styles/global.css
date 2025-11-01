@@ -140,3 +140,16 @@ section {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Show skip link when focused for keyboard navigation */
+.sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 9999;
+}
