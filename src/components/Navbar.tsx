@@ -44,7 +44,7 @@ export default function Navbar() {
               <img
                 src="/images/logo/logo-transparent.png"
                 alt="Kozy Komfort Logo"
-                className="h-14 md:h-16 w-auto"
+                className="h-[67px] md:h-[77px] w-auto"
               />
             </a>
           </div>
